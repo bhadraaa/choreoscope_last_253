@@ -1,16 +1,18 @@
-# appp
+# Chorescope
 
-A new Flutter project.
+An app that identifies the pose or the mudras of the dance that is being performed.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is built with Flutter, making it a highly customizable and efficient mobile application for dance enthusiasts and learners.
 
-A few resources to get you started if this is your first Flutter project:
+### Features:
+- Identify dance mudras using AI-powered recognition.
+- Learn the history and cultural background of traditional Indian dances.
+- Explore Bharatanatyam and its intricate hand gestures.
 
+### Resources
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+For more help with Flutter development, visit the [online documentation](https://docs.flutter.dev/), which offers tutorials, samples, guidance on mobile development, and a full API reference.
