@@ -3,7 +3,9 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import '../../../../screen/profile.dart';
 import '../../../../screen/search.dart';
+
 //import 'home.dart';
+String? eemail;
 
 class Nav extends StatefulWidget {
   const Nav({super.key});

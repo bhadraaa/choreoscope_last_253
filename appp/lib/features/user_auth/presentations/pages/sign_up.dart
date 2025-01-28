@@ -5,17 +5,11 @@ import 'package:flutter/material.dart';
 //import 'package:google_sign_in/google_sign_in.dart';
 import 'login.dart';
 import 'nav.dart';
+import 'package:email_validator/email_validator.dart';
 
 //import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 ///import 'package:google_sign_in/google_sign_in.dart';
-extension EmailValidator on String {
-  bool isValidEmail() {
-    return RegExp(
-            r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$')
-        .hasMatch(this);
-  }
-}
 
 class MySignIn extends StatefulWidget {
   const MySignIn({super.key});
@@ -101,6 +95,8 @@ class _MySignInState extends State<MySignIn> {
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your Email id';
+                          } else if (!EmailValidator.validate(value)) {
+                            return 'Please enter a valid Email ID';
                           }
                           return null;
                         },

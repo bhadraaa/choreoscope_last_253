@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import '../features/user_auth/presentations/pages/login.dart';
 
 class MyProfile extends StatelessWidget {
-  const MyProfile({super.key});
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
