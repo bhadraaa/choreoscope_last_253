@@ -70,7 +70,7 @@ class _MyLoginState extends State<MyLogin> {
                             fillColor: const Color.fromARGB(255, 106, 2, 2)
                                 .withOpacity(0.1),
                             filled: true,
-                            prefixIcon: const Icon(Icons.person)),
+                            prefixIcon: const Icon(Icons.email)),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your username';

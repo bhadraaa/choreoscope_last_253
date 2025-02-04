@@ -10,7 +10,9 @@ class FirebaseAuthServices {
           email: email, password: password);
       return credential.user;
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'email-already-in-use') {
+      if (e.code == 'weak-password') {
+        showToast(message: 'The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
         showToast(message: 'the email is already in use.');
       } else {
         showToast(message: 'some errror occured : ${e.code}');
