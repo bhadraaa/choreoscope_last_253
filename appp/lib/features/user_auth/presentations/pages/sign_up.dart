@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 import 'nav.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 //import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
@@ -28,6 +29,7 @@ class _MySignInState extends State<MySignIn> {
   final _email = TextEditingController();
   final _passwordController1 = TextEditingController();
   final _passwordController = TextEditingController();
+
   void dispose() {
     _usernameController.dispose();
     _passwordController.dispose();
@@ -213,6 +215,13 @@ class _MySignInState extends State<MySignIn> {
     );
   }
 
+  Future<void> storeUserData(String username, String email) async {
+    await FirebaseFirestore.instance.collection('users').doc(email).set({
+      'username': username,
+      'email': email,
+    });
+  }
+
   void goToLogin(BuildContext ctx) async {
     Navigator.of(ctx).pushReplacement(
       MaterialPageRoute(builder: (ctx) => const MyLogin()),
@@ -223,7 +232,7 @@ class _MySignInState extends State<MySignIn> {
     setState(() {
       _isSignUp = true;
     });
-    //String username = _usernameController.text;
+    String username = _usernameController.text;
     String password1 = _passwordController1.text;
     String email = _email.text;
     String password = _passwordController.text;
@@ -233,6 +242,8 @@ class _MySignInState extends State<MySignIn> {
     });
     if (user != null) {
       if (password1 == password) {
+        await storeUserData(username, email);
+
         showToast(message: 'successfully signed up');
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (ctx) => const Nav()),

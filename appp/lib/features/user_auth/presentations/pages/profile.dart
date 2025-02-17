@@ -1,7 +1,30 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import '../features/user_auth/presentations/pages/login.dart';
+import 'login.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:lottie/lottie.dart';
+import 'nav_key.dart';
 
-class MyProfile extends StatelessWidget {
+class MyProfile extends StatefulWidget {
+  @override
+  State<MyProfile> createState() => _MyProfileState();
+}
+
+class _MyProfileState extends State<MyProfile> {
+  String? username = '';
+  @override
+  void initState() {
+    super.initState();
+    loadUsername();
+  }
+
+  void loadUsername() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      username = prefs.getString('username') ?? 'User';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,34 +39,30 @@ class MyProfile extends StatelessWidget {
         child: Center(
           child: Column(
             children: [
+              const SizedBox(height: 20.0),
               // Profile Picture
               CircleAvatar(
                 radius: 50.0,
-                backgroundImage: NetworkImage(
-                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKNHRh9kU6nD5_t6MWuSqABOSSN2UeqCTqTA&s", // Replace with a valid image URL
+                child: Lottie.asset(
+                  'assets/animations/Animation-1.json',
+                  repeat: false,
+                  width: 200,
+                  height: 200,
+                  fit: BoxFit.cover,
                 ),
-                backgroundColor: Colors.grey[200],
+                backgroundColor: const Color.fromARGB(221, 233, 204, 204),
               ),
               const SizedBox(height: 20.0),
               // Name
-              const Text(
-                'Your Name',
+              Text(
+                "Welcome  $username !",
                 style: TextStyle(
                   fontSize: 22.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
               ),
-              const SizedBox(height: 10.0),
-              // Additional Info
-              const Text(
-                'yourname@example.com',
-                style: TextStyle(
-                  fontSize: 16.0,
-                  color: Color.fromARGB(255, 55, 47, 47),
-                ),
-              ),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 20.0),
 
               ElevatedButton.icon(
                 onPressed: () {
@@ -62,7 +81,7 @@ class MyProfile extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: 40,
+                height: 20,
               ),
               ElevatedButton.icon(
                 onPressed: () {
@@ -95,5 +114,32 @@ class MyProfile extends StatelessWidget {
     });
   }
 
-  history(BuildContext ctx) {}
+  history(BuildContext ctx) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return SizedBox(
+              height: 600,
+              child: ListView(
+                children: [
+                  ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/logo.png'),
+                    ),
+                    title: Text('image1 mudra'),
+                    subtitle: Text('meaning '),
+                    trailing: IconButton(
+                      onPressed: () {},
+                      icon: Icon(
+                        Icons.navigate_next_rounded,
+                        color: const Color.fromARGB(255, 144, 15, 15),
+                      ),
+                    ),
+                    tileColor: const Color.fromARGB(255, 207, 163, 163),
+                    textColor: Colors.black,
+                  )
+                ],
+              ));
+        });
+  }
 }

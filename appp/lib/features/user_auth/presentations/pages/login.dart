@@ -1,12 +1,13 @@
 import 'package:appp/global/common/toast.dart';
 import 'package:appp/screen/forgot_pw.dart';
 import 'package:flutter/material.dart';
-//import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'nav.dart';
 import 'sign_up.dart';
 import 'package:appp/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 const SAVE_KEY_NAME = '_userLoggedIn';
 
@@ -23,6 +24,7 @@ class _MyLoginState extends State<MyLogin> {
   final _email = TextEditingController();
   final _passwordController = TextEditingController();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
   @override
   void dispose() {
     _passwordController.dispose();
@@ -70,7 +72,7 @@ class _MyLoginState extends State<MyLogin> {
                             fillColor: const Color.fromARGB(255, 106, 2, 2)
                                 .withOpacity(0.1),
                             filled: true,
-                            prefixIcon: const Icon(Icons.person)),
+                            prefixIcon: const Icon(Icons.email)),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your username';
@@ -228,6 +230,23 @@ class _MyLoginState extends State<MyLogin> {
     );
   }
 
+  Future<String?> getUsername(String email) async {
+    try {
+      DocumentSnapshot userDoc =
+          await FirebaseFirestore.instance.collection('users').doc(email).get();
+
+      if (userDoc.exists) {
+        return userDoc['username'];
+      } else {
+        print("No user found with this email: $email");
+        return null;
+      }
+    } catch (e) {
+      print("Firestore Error: $e");
+      return null;
+    }
+  }
+
   void goTosignin(BuildContext ctx) async {
     Navigator.of(ctx).pushReplacement(
       MaterialPageRoute(builder: (ctx) => const MySignIn()),
@@ -246,6 +265,9 @@ class _MyLoginState extends State<MyLogin> {
       _isSigning = false;
     });
     if (user != null) {
+      String? username = await getUsername(user.email!);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('username', username ?? '');
       //showToast(message: ' successfulllyy logged in');
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(builder: (ctx) => const Nav()),

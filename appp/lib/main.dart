@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'features/app/splash_screen/splash.dart'; // Adjusted the import path
@@ -18,6 +19,7 @@ Future main() async {
   } else {
     await Firebase.initializeApp();
   }
+
   runApp(MyApp());
 }
 
