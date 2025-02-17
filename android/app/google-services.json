@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "814761519101",
+    "project_id": "choreo-flutter",
+    "storage_bucket": "choreo-flutter.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:814761519101:android:e4ff622695ebbe878f9b94",
+        "android_client_info": {
+          "package_name": "com.example.appp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "814761519101-qlm8vb2s4r8rdvtld89psdsdho6vnkre.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxqDxdG5uaw2eoRwVN-1lzPY651ukmxhk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "814761519101-qlm8vb2s4r8rdvtld89psdsdho6vnkre.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "814761519101-l4htiqjjrrpnu4lpr1i157rl5a6k988j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.appp.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
