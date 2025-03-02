@@ -31,20 +31,21 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  flutter_screenutil: ^5.9.3
+  
   cupertino_icons: ^1.0.8
-  shared_preferences: ^2.4.0
+  shared_preferences: ^2.5.2
   curved_navigation_bar: ^1.0.6
   image_picker: ^1.1.2
-  firebase_core: ^3.10.1
-  cloud_firestore: ^5.6.2
-  firebase_auth: ^5.4.1
-  firebase_storage: ^12.4.1
-  fluttertoast: ^8.2.10
+  firebase_core: ^3.12.1
+  cloud_firestore: ^5.6.5
+  firebase_auth: ^5.5.1
+  firebase_storage: ^12.4.4
+  fluttertoast: ^8.2.12
   font_awesome_flutter: ^10.8.0
   google_sign_in: ^6.2.2
-  email_validator: ^2.1.17
+  email_validator: ^3.0.0
+  
 
 dev_dependencies:
   flutter_test:
@@ -73,6 +74,35 @@ flutter:
   assets:
      - assets/images/logo.png
      - assets/images/google-removebg-preview.png
+     - assets/mudras/ALAPADMAM.png
+     - assets/mudras/ARALA.jpg
+     - assets/mudras/ARDHA_CHANDRA.jpg
+     - assets/mudras/ARDHA _PATHAKA.jpg
+     - assets/mudras/BRAMARAM.jpg
+     - assets/mudras/CHANDRA KALA.jpg
+     - assets/mudras/CHATHURAM.jpg
+     - assets/mudras/HAMSAPAKSHA.jpg
+     - assets/mudras/HAMSASYAM.jpg
+     - assets/mudras/KANGULAM.jpg
+     - assets/mudras/KAPITHA.jpg
+     - assets/mudras/KATAKAMUKHA_1.jpg
+     - assets/mudras/KATAKAMUKHA_2.jpg
+     - assets/mudras/KATAKAMUKHA_3.jpg
+     - assets/mudras/KATRIMUKHA.jpg
+     - assets/mudras/MAYURA.jpg
+     - assets/mudras/MRIGASIRSHA.jpg
+     - assets/mudras/MUKULAM.jpg
+     - assets/mudras/MUSHTI.jpg
+     - assets/mudras/PADMAKOSHA.jpg
+     - assets/mudras/PATHAKA.jpg
+     - assets/mudras/SARPASIRSHA.jpg
+     - assets/mudras/SHUKATUNDAM.jpg
+     - assets/mudras/SHIKHARA.jpg
+     - assets/mudras/SIMHAMUKHAM.jpg
+     - assets/mudras/SOOCHI.jpg
+     - assets/mudras/TAMARACHUDAM.jpg
+     - assets/mudras/TRI_PATHAKA.jpg
+     - assets/mudras/TRISHULAM.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -87,8 +117,8 @@ flutter_launcher_icons:
   web:
     generate: true
     image_path: "assets/icon/icon.png"
-    background_color: "#hexcode"
-    theme_color: "#hexcode"
+    background_color: "#FFFFFF"  # Set to white
+    theme_color: "#FFFFFF"
   windows:
     generate: true
     image_path: "assets/icon/icon.png"
@@ -96,6 +126,7 @@ flutter_launcher_icons:
   macos:
     generate: true
     image_path: "assets/icon/icon.png"
+
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a

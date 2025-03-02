@@ -44,9 +44,18 @@ class _MyLoginState extends State<MyLogin> {
               SizedBox(height: 50),
               Text(
                 "Welcome Back",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 148, 0, 0)),
               ),
-              Text("Enter Your credentials To Login"),
+              Text(
+                "Enter Your credentials To Login",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 148, 0, 0)),
+              ),
               const SizedBox(height: 30),
               Container(
                 margin: const EdgeInsets.all(20),
@@ -205,7 +214,13 @@ class _MyLoginState extends State<MyLogin> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("Dont have an account? "),
+                          const Text(
+                            "Dont have an account? ",
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: const Color.fromARGB(255, 148, 0, 0)),
+                          ),
                           TextButton(
                               onPressed: () {
                                 goTosignin(context);

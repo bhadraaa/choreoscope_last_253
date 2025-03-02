@@ -49,9 +49,16 @@ class _MySignInState extends State<MySignIn> {
               SizedBox(height: 50),
               Text(
                 "Sign Up",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 106, 10, 10)),
               ),
-              Text("Create Your Account"),
+              Text(
+                "Create Your Account",
+                style: TextStyle(
+                    fontSize: 12, color: const Color.fromARGB(255, 148, 0, 0)),
+              ),
               const SizedBox(height: 50),
               Container(
                 margin: const EdgeInsets.all(20),
@@ -67,6 +74,7 @@ class _MySignInState extends State<MySignIn> {
                       TextFormField(
                         controller: _usernameController,
                         decoration: InputDecoration(
+                            labelStyle: TextStyle(color: Colors.black),
                             labelText: "Username",
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(18),
@@ -75,6 +83,7 @@ class _MySignInState extends State<MySignIn> {
                                 .withOpacity(0.1),
                             filled: true,
                             prefixIcon: const Icon(Icons.person)),
+                        style: TextStyle(color: Colors.black),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your username';
@@ -86,6 +95,7 @@ class _MySignInState extends State<MySignIn> {
                       TextFormField(
                         controller: _email,
                         decoration: InputDecoration(
+                            labelStyle: TextStyle(color: Colors.black),
                             labelText: "Email",
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(18),
@@ -94,6 +104,7 @@ class _MySignInState extends State<MySignIn> {
                                 .withOpacity(0.1),
                             filled: true,
                             prefixIcon: const Icon(Icons.email)),
+                        style: TextStyle(color: Colors.black),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your Email id';
@@ -107,6 +118,7 @@ class _MySignInState extends State<MySignIn> {
                       TextFormField(
                         controller: _passwordController,
                         decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                               borderSide: BorderSide.none),
@@ -116,6 +128,7 @@ class _MySignInState extends State<MySignIn> {
                           prefixIcon: const Icon(Icons.password),
                           labelText: 'Password',
                         ),
+                        style: TextStyle(color: Colors.black),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your password';
@@ -128,6 +141,7 @@ class _MySignInState extends State<MySignIn> {
                         controller: _passwordController1,
                         obscureText: !_isPasswordVisible,
                         decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                               borderSide: BorderSide.none),
@@ -149,6 +163,7 @@ class _MySignInState extends State<MySignIn> {
                             },
                           ),
                         ),
+                        style: TextStyle(color: Colors.black),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your password';
@@ -192,7 +207,12 @@ class _MySignInState extends State<MySignIn> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("already have an account? "),
+                          const Text(
+                            "already have an account? ",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Color.fromARGB(255, 110, 9, 9)),
+                          ),
                           TextButton(
                               onPressed: () {
                                 goToLogin(context);
@@ -200,7 +220,7 @@ class _MySignInState extends State<MySignIn> {
                               child: const Text(
                                 "Login",
                                 style: TextStyle(
-                                    color: Color.fromARGB(255, 149, 34, 3)),
+                                    color: Color.fromARGB(255, 95, 9, 9)),
                               ))
                         ],
                       )
@@ -216,9 +236,22 @@ class _MySignInState extends State<MySignIn> {
   }
 
   Future<void> storeUserData(String username, String email) async {
-    await FirebaseFirestore.instance.collection('users').doc(email).set({
-      'username': username,
-      'email': email,
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user == null) {
+      print("User not logged in!");
+      return;
+    }
+
+    // Convert email to Firestore-safe ID
+    String userId = user.email!.replaceAll('.', '_');
+
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(userId)
+        .collection('details')
+        .add({
+      "username": username,
+      "email": email,
     });
   }
 

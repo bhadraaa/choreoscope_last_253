@@ -54,11 +54,14 @@ class _DanceDetailsPageState extends State<DanceDetailsPage> {
       appBar: AppBar(
         title: Text(
           widget.danceName,
-          style: TextStyle(color: Colors.white, fontSize: 30),
+          style: TextStyle(color: Colors.white, fontSize: 23),
         ),
         backgroundColor: const Color.fromARGB(255, 100, 12, 5),
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
       ),
@@ -84,13 +87,16 @@ class _DanceDetailsPageState extends State<DanceDetailsPage> {
                 style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.brown),
+                    color: Color.fromARGB(255, 142, 4, 4)),
               ),
               const SizedBox(height: 8),
               Text(
                 widget.history,
-                style: const TextStyle(fontSize: 16),
                 textAlign: TextAlign.justify,
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 21, 1, 1)),
               ),
               const SizedBox(height: 20),
 
@@ -100,7 +106,7 @@ class _DanceDetailsPageState extends State<DanceDetailsPage> {
                 style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.brown),
+                    color: Color.fromARGB(255, 130, 5, 5)),
               ),
               const SizedBox(height: 8),
               Card(
@@ -130,12 +136,15 @@ class _DanceDetailsPageState extends State<DanceDetailsPage> {
                 style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
-                    color: Colors.brown),
+                    color: Color.fromARGB(255, 126, 2, 2)),
               ),
               const SizedBox(height: 8),
               Text(
                 widget.dressing,
-                style: const TextStyle(fontSize: 16),
+                style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: Color.fromARGB(255, 21, 1, 1)),
                 textAlign: TextAlign.justify,
               ),
               const SizedBox(height: 20),
@@ -150,7 +159,7 @@ class _DanceDetailsPageState extends State<DanceDetailsPage> {
                       style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: Colors.brown),
+                          color: Color.fromARGB(255, 148, 1, 1)),
                     ),
                     const SizedBox(height: 8),
                     YoutubePlayer(

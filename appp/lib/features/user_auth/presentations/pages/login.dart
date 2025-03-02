@@ -46,9 +46,16 @@ class _MyLoginState extends State<MyLogin> {
               SizedBox(height: 50),
               Text(
                 "Welcome Back",
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: const Color.fromARGB(255, 106, 10, 10)),
               ),
-              Text("Enter Your credentials To Login"),
+              Text(
+                "Enter Your credentials To Login",
+                style: TextStyle(
+                    fontSize: 15, color: const Color.fromARGB(255, 148, 0, 0)),
+              ),
               const SizedBox(height: 30),
               Container(
                 margin: const EdgeInsets.all(20),
@@ -65,6 +72,7 @@ class _MyLoginState extends State<MyLogin> {
                       TextFormField(
                         controller: _email,
                         decoration: InputDecoration(
+                            labelStyle: TextStyle(color: Colors.black),
                             labelText: "Email",
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(18),
@@ -73,6 +81,7 @@ class _MyLoginState extends State<MyLogin> {
                                 .withOpacity(0.1),
                             filled: true,
                             prefixIcon: const Icon(Icons.email)),
+                        style: TextStyle(color: Colors.black),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your username';
@@ -85,6 +94,7 @@ class _MyLoginState extends State<MyLogin> {
                         controller: _passwordController,
                         obscureText: !_isPasswordVisible,
                         decoration: InputDecoration(
+                          labelStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(18),
                               borderSide: BorderSide.none),
@@ -106,6 +116,7 @@ class _MyLoginState extends State<MyLogin> {
                             },
                           ),
                         ),
+                        style: TextStyle(color: Colors.black),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter your password';
@@ -207,7 +218,12 @@ class _MyLoginState extends State<MyLogin> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("Dont have an account? "),
+                          const Text(
+                            "Dont have an account? ",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: const Color.fromARGB(255, 148, 0, 0)),
+                          ),
                           TextButton(
                               onPressed: () {
                                 goTosignin(context);

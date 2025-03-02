@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dance_details.dart';
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/gestures.dart'; // Add this import
-import 'package:lottie/lottie.dart';
 import 'package:lottie/lottie.dart';
 
 class MyHome extends StatefulWidget {
@@ -35,9 +34,9 @@ class _MyHomeState extends State<MyHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ChoreScope",
+        title: const Text("ChoreoScope",
             style: TextStyle(color: Colors.white, fontSize: 30)),
-        backgroundColor: const Color.fromARGB(255, 100, 12, 5),
+        backgroundColor: const Color.fromARGB(255, 159, 15, 4),
       ),
       body: FutureBuilder<List<Map<String, dynamic>>>(
         future: fetchDanceForms(), // Fetch data from Firestore
@@ -63,7 +62,7 @@ class _MyHomeState extends State<MyHome> {
               const Text(
                 "Welcome to Choreoscope",
                 style: TextStyle(
-                    fontSize: 25,
+                    fontSize: 19,
                     fontWeight: FontWeight.bold,
                     color: Color.fromARGB(255, 149, 16, 16)),
                 textAlign: TextAlign.center,
@@ -72,15 +71,15 @@ class _MyHomeState extends State<MyHome> {
               const Text(
                 "Discover the beauty of classical dance",
                 style: TextStyle(
-                    fontSize: 20, color: Color.fromARGB(255, 145, 6, 6)),
+                    fontSize: 15, color: Color.fromARGB(255, 145, 6, 6)),
                 textAlign: TextAlign.center,
               ),
               const SizedBox(
-                height: 40,
+                height: 20,
               ),
               Center(
                 child: SizedBox(
-                  height: 340,
+                  height: 280,
                   child: Listener(
                     onPointerSignal: (PointerSignalEvent event) {
                       if (event is PointerScrollEvent) {

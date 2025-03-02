@@ -1,0 +1,32 @@
+buildscript {
+    repositories {
+        google()   // Ensure that Google repository is included
+        mavenCentral()
+    }
+    dependencies {
+        // Add the classpath for Google services here
+        classpath 'com.google.gms:google-services:4.4.2'  // Google Services classpath
+        classpath 'com.android.tools.build:gradle:8.2.1'   // Android Gradle Plugin (Ensure version matches your setup)
+        
+    }
+}
+
+allprojects {
+    repositories {
+        google()  // Ensure Google repository is listed here too
+        mavenCentral()
+    }
+}
+
+rootProject.buildDir = "../build"
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(":app")
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
+
